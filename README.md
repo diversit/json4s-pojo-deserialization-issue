@@ -11,3 +11,9 @@ When serialising to json, this limitation can be overcome by implementing a Cust
 However, when deserialising from json to a Pojo a 'Can't find ScalaSig for class ...' exception is thrown even before the CustomSerializer is used.
 
 The problem lies in the Reflector when determining the 'ctorParamType'. It is always using the ScalaSigReader to read the constructor, but why is even used when a CustomSerializer is provided? Should it not delegate the deserialisation to the CustomSerializer earlier?
+
+### Reproduce
+
+Run the Json4sPojoTest to reproduce the Json4s issue.
+
+JsonTest verifies the Pojo can be (de)serialized using Jackson.
